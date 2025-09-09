@@ -18,10 +18,11 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
-<body>
+<body class="font-inter">
     <header class="bg-[#15803D]">
         <nav class="flex flex-col md:flex-row justify-between w-11/12 mx-auto py-8 items-center gap-6">
-            <div>
+            <div class="flex items-center gap-2">
+                <img src="./assets/about.png" class="w-[40px] h-[40px]" alt="">
                 <h1 class="text-2xl text-white font-bold">Green Earth</h1>
             </div>
             <div class="font-medium flex flex-col md:flex-row lg:text-white space-x-6">
@@ -35,6 +36,7 @@
         </nav>
     </header>
     <main>
+        <!-- hero section  -->
         <section class="bg-[#CFF0DC] flex flex-col md:flex-row justify-between items-center p-5 md:p-0">
             <img src="./assets/hero-leaf1.png" alt="" class="max-w-[450px] hidden md:block">
             <div class="basis-2/4 text-center space-y-4">
@@ -42,9 +44,37 @@
                 <p class="font-normal text-[#1F2937]">Join our mission to plant 1 million trees and make the Earth
                     greener for future
                     generations.</p>
-                <button class="text-[#15803D] font-medium px-4 py-4 bg-[#FACC15] rounded-[999px]">Plant a Tree</button>
+                <button class="text-[#15803D] font-medium px-4 py-4 bg-[#FACC15] rounded-[999px]">Get Involved</button>
             </div>
             <img src="./assets/hero-leaf2.png" class="max-w-[450px] hidden md:block" alt="">
+        </section>
+
+
+        <!-- grid section` -->
+        <section class="bg-[#F0FDF4] pt-16">
+            <h3 class="text-3xl text-[#1F2937] font-semibold text-center mb-10">Choose Your Trees</h3>
+            <article class="w-11/12 mx-auto flex flex-col lg:flex-row">
+                <!-- button section -->
+                <section class=" w-[15%] flex flex-col">
+                    <h2 class="font-semibold text-2xl text-black mb-5">categories</h2>
+                    <div
+                        class="rounded-sm  px-2.5 py-2 bg-[#F0FDF4] text-lg font-medium text-left hover:bg-[#15803D] hover:text-white text-[20px]">
+                        All Trees</div>
+                    <div id="all-categories">
+
+                    </div>
+                </section>
+
+                <!-- plants cards -->
+
+                <section id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-2 p-4  w-[70%] gap-4">
+
+
+                </section>
+
+                <!-- cart section -->
+                <section class="border border-red-600 w-[15%]">your cart</section>
+            </article>
         </section>
     </main>
     <script src="./js/script.js"></script>
