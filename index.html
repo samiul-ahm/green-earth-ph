@@ -65,16 +65,34 @@
                     </div>
                 </section>
 
+
+
+
                 <!-- plants cards -->
+
+
 
                 <section id="card-container"
                     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-2 p-4  w-[70%] gap-4">
 
+                    <!-- spinner -->
+                    <div id="spinner" class="hidden flex justify-center py-10">
+                        <span class="loading loading-spinner loading-lg text-green-600"></span>
+                    </div>
 
                 </section>
 
                 <!-- cart section -->
-                <section class="border border-red-600 w-[15%]">your cart</section>
+                <section class=" w-[15%] p-4 space-y-4 bg-white rounded-[12px]">
+                    <h2 class="font-semibold text-lg text center">Your Cart</h2>
+                    <div class="cart-items space-y-3">
+
+                    </div>
+                    <p class="font-semibold">Total: ৳<span id="cart-total">0</span></p>
+                </section>
+
+
+
             </article>
 
 
@@ -118,7 +136,7 @@
         <!-- our impact section -->
         <section class="max-w-7xl mx-auto py-12">
             <h3 class="text-3xl font-semibold text-center">Our Impact</h3>
-            <div class="flex justify-between items-center py-9">
+            <div class="flex flex-col md:flex-row gap-6 md:gap-0 justify-between items-center py-9">
                 <div class="p-10 bg-white rounded-[12px] w-[300px] text-center">
                     <h2 class="text-[#15803D] font-semibold text-3xl mb-3">500K+</h2>
                     <p>Trees Planted</p>

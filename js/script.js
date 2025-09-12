@@ -1,5 +1,47 @@
 const allCategories = "https://openapi.programming-hero.com/api/categories";
 
+let cart = [];
+let total = 0;
+
+// ==================== CART FUNCTIONS ====================
+const updateCartUI = () => {
+  const cartContainer = document.querySelector(".cart-items");
+  const totalElement = document.getElementById("cart-total");
+
+  cartContainer.innerHTML = "";
+
+  cart.forEach((item, index) => {
+    const div = document.createElement("div");
+    div.className =
+      "bg-[#F0FDF4] flex items-center justify-between p-3 rounded-lg";
+    div.innerHTML = `
+      <div>
+        <h3>${item.name}</h3>
+        <p>৳<span>${item.price}</span></p>
+      </div>
+      <i class="fa-solid fa-xmark cursor-pointer text-red-500"></i>
+    `;
+
+    // remove from cart on click x
+    div.querySelector("i").addEventListener("click", () => {
+      total -= item.price;
+      cart.splice(index, 1);
+      updateCartUI();
+    });
+
+    cartContainer.append(div);
+  });
+
+  totalElement.innerText = total;
+};
+
+const addToCart = (plant) => {
+  cart.push(plant);
+  total += plant.price;
+  updateCartUI();
+};
+
+// ==================== MODAL ====================
 const openPlantModal = (plant) => {
   const modalBox = document.getElementById("modal-container");
   modalBox.innerHTML = `
@@ -19,11 +61,20 @@ const openPlantModal = (plant) => {
       </div>
     </div>
   `;
-
   document.getElementById("my_modal_5").showModal();
 };
 
-const loadCard = (id) => {
+// ==================== SPINNER ====================
+const showSpinner = () => {
+  document.getElementById("spinner").classList.remove("hidden");
+};
+const hideSpinner = () => {
+  document.getElementById("spinner").classList.add("hidden");
+};
+
+// ==================== LOAD CARDS ====================
+const loadCard = (id, btn) => {
+  showSpinner();
   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
     .then((data) => {
@@ -55,11 +106,20 @@ const loadCard = (id) => {
           </div>
         `;
 
-        // Open modal when clicking the card title
-        card.querySelector(".card-title").addEventListener("click", () => openPlantModal(plant));
+        // modal on title click
+        card
+          .querySelector(".card-title")
+          .addEventListener("click", () => openPlantModal(plant));
+        // add to cart
+        card
+          .querySelector("button")
+          .addEventListener("click", () => addToCart(plant));
 
         container.append(card);
       });
+
+      hideSpinner();
+      setActiveButton(btn);
     });
 };
 
@@ -71,17 +131,19 @@ const allCategory = () => {
       data.categories.forEach((category) => {
         const categoryBtn = document.createElement("div");
         categoryBtn.innerHTML = `
-          <div onclick="loadCard(${category.id})"
-               class="rounded-sm px-2.5 py-2 bg-[#F0FDF4] text-lg font-medium text-left hover:bg-[#15803D] hover:text-white text-[20px]">
+          <div class="category-btn rounded-sm px-2.5 py-2 bg-[#F0FDF4] text-lg font-medium text-left hover:bg-[#15803D] hover:text-white text-[20px] cursor-pointer">
             ${category.category_name}
           </div>
         `;
+        const btnEl = categoryBtn.querySelector("div");
+        btnEl.addEventListener("click", () => loadCard(category.id, btnEl));
         container.append(categoryBtn);
       });
     });
 };
 
 const allTree = () => {
+  showSpinner();
   fetch("https://openapi.programming-hero.com/api/plants")
     .then((res) => res.json())
     .then((data) => {
@@ -112,14 +174,27 @@ const allTree = () => {
           </div>
         `;
 
-        // Open modal on title click
-        card.querySelector(".card-title").addEventListener("click", () => openPlantModal(plant));
+        card
+          .querySelector(".card-title")
+          .addEventListener("click", () => openPlantModal(plant));
+        card
+          .querySelector("button")
+          .addEventListener("click", () => addToCart(plant));
 
         container.append(card);
       });
+      hideSpinner();
     });
 };
 
-// Initial load
+// ==================== ACTIVE BUTTON ====================
+const setActiveButton = (btn) => {
+  document
+    .querySelectorAll(".category-btn")
+    .forEach((b) => b.classList.remove("active"));
+  btn?.classList.add("active");
+};
+
+// ==================== INITIAL LOAD ====================
 allCategory();
 allTree();
