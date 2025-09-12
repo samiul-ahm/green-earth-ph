@@ -3,7 +3,7 @@ const allCategories = "https://openapi.programming-hero.com/api/categories";
 let cart = [];
 let total = 0;
 
-// ==================== CART FUNCTIONS ====================
+//  CART FUNCTIONS
 const updateCartUI = () => {
   const cartContainer = document.querySelector(".cart-items");
   const totalElement = document.getElementById("cart-total");
@@ -22,7 +22,6 @@ const updateCartUI = () => {
       <i class="fa-solid fa-xmark cursor-pointer text-red-500"></i>
     `;
 
-    // remove from cart on click x
     div.querySelector("i").addEventListener("click", () => {
       total -= item.price;
       cart.splice(index, 1);
@@ -41,7 +40,7 @@ const addToCart = (plant) => {
   updateCartUI();
 };
 
-// ==================== MODAL ====================
+//  MODAL
 const openPlantModal = (plant) => {
   const modalBox = document.getElementById("modal-container");
   modalBox.innerHTML = `
@@ -64,15 +63,17 @@ const openPlantModal = (plant) => {
   document.getElementById("my_modal_5").showModal();
 };
 
-// ==================== SPINNER ====================
+//  SPINNER
 const showSpinner = () => {
+  console.log("Spinner showing...");
   document.getElementById("spinner").classList.remove("hidden");
 };
 const hideSpinner = () => {
+  console.log("Spinner hidden...");
   document.getElementById("spinner").classList.add("hidden");
 };
 
-// ==================== LOAD CARDS ====================
+//  LOAD CARDS
 const loadCard = (id, btn) => {
   showSpinner();
   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
@@ -106,11 +107,9 @@ const loadCard = (id, btn) => {
           </div>
         `;
 
-        // modal on title click
         card
           .querySelector(".card-title")
           .addEventListener("click", () => openPlantModal(plant));
-        // add to cart
         card
           .querySelector("button")
           .addEventListener("click", () => addToCart(plant));
@@ -187,7 +186,7 @@ const allTree = () => {
     });
 };
 
-// ==================== ACTIVE BUTTON ====================
+//  ACTIVE BUTTON
 const setActiveButton = (btn) => {
   document
     .querySelectorAll(".category-btn")
@@ -195,6 +194,6 @@ const setActiveButton = (btn) => {
   btn?.classList.add("active");
 };
 
-// ==================== INITIAL LOAD ====================
+//  INITIAL LOAD
 allCategory();
 allTree();

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Earth</title>
 
-    <!-- tailwindcss and daisi ui cdn -->
+    <!-- tailwindcss and daisy ui cdn -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
@@ -35,8 +35,9 @@
             </div>
         </nav>
     </header>
+
     <main class="bg-[#F0FDF4]">
-        <!-- hero section  -->
+        <!-- hero section -->
         <section class="bg-[#CFF0DC] flex flex-col md:flex-row justify-between items-center p-5 md:p-0">
             <img src="./assets/hero-leaf1.png" alt="" class="max-w-[420px] hidden md:block">
             <div class="basis-2/4 text-center space-y-4">
@@ -49,62 +50,46 @@
             <img src="./assets/hero-leaf2.png" class="max-w-[420px] hidden md:block" alt="">
         </section>
 
-
-        <!-- grid section` -->
+        <!-- grid section -->
         <section class="bg-[#F0FDF4] pt-16 ">
             <h3 class="text-3xl text-[#1F2937] font-semibold text-center mb-10">Choose Your Trees</h3>
             <article class="w-11/12 mx-auto flex flex-col lg:flex-row">
                 <!-- button section -->
                 <section class=" w-[15%] flex flex-col">
                     <h2 class="font-semibold text-2xl text-black mb-5">categories</h2>
-                    <div
-                        class="rounded-sm  px-2.5 py-2 bg-[#F0FDF4] text-lg font-medium text-left hover:bg-[#15803D] hover:text-white text-[20px]">
-                        All Trees</div>
-                    <div id="all-categories">
-
+                    <div class="rounded-sm px-2.5 py-2 bg-[#F0FDF4] text-lg font-medium text-left hover:bg-[#15803D] hover:text-white text-[20px] cursor-pointer"
+                        id="all-trees-btn">
+                        All Trees
                     </div>
+                    <div id="all-categories"></div>
                 </section>
 
-
-
-
-                <!-- plants cards -->
-
-
-
-                <section id="card-container"
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-2 p-4  w-[70%] gap-4">
-
+                <!-- plants + spinner -->
+                <section class="w-[70%] p-4">
                     <!-- spinner -->
                     <div id="spinner" class="hidden flex justify-center py-10">
                         <span class="loading loading-spinner loading-lg text-green-600"></span>
                     </div>
 
+                    <!-- cards -->
+                    <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    </div>
                 </section>
 
                 <!-- cart section -->
                 <section class=" w-[15%] p-4 space-y-4 bg-white rounded-[12px]">
                     <h2 class="font-semibold text-lg text center">Your Cart</h2>
-                    <div class="cart-items space-y-3">
-
-                    </div>
+                    <div class="cart-items space-y-3"></div>
                     <p class="font-semibold">Total: ৳<span id="cart-total">0</span></p>
                 </section>
-
-
-
             </article>
 
-
-            <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+            <!-- modal -->
             <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box">
-                    <div id="modal-container">
-
-                    </div>
+                    <div id="modal-container"></div>
                     <div class="modal-action">
                         <form method="dialog">
-                            <!-- if there is a button in form, it will close the modal -->
                             <button class="btn">Close</button>
                         </form>
                     </div>
@@ -112,17 +97,17 @@
             </dialog>
         </section>
 
-        <!-- about campaign section -->
-
+        <!-- about campaign -->
         <section class="max-w-6xl mx-auto my-10 ">
             <h2 class="text-3xl text-[#1F2937] font-semibold text-center mb-10">About the Campaign</h2>
             <div class="flex flex-col md:flex-row justify-between gap-8 items-center">
                 <img src="./assets/about.png" alt="">
-                <div>
+                <div class="mx-5 md:mx-0">
                     <p class="mb-5 text-[#1F2937] font-normal">Green Earth is a global tree plantation initiative
-                        dedicated to fighting climate change. Since our start, we’ve planted over 500,000 trees
-                        worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and
-                        combat global warming.</p>
+                        dedicated to fighting
+                        climate change. Since our start, we’ve planted over 500,000 trees worldwide. By joining our
+                        campaign, you help
+                        restore forests, create habitats for wildlife, and combat global warming.</p>
                     <ul class="list-disc ml-4">
                         <li>Restoration of natural habitats</li>
                         <li>Improvement of air quality</li>
@@ -132,8 +117,7 @@
             </div>
         </section>
 
-
-        <!-- our impact section -->
+        <!-- our impact -->
         <section class="max-w-7xl mx-auto py-12">
             <h3 class="text-3xl font-semibold text-center">Our Impact</h3>
             <div class="flex flex-col md:flex-row gap-6 md:gap-0 justify-between items-center py-9">
@@ -152,7 +136,7 @@
             </div>
         </section>
 
-        <!-- form section -->
+        <!-- form -->
         <section class="flex flex-col items-center bg-[#166534] py-20">
             <h2 class="text-center text-3xl text-white font-semibold pb-12">Plant a Tree Today</h2>
             <form class="mx-auto bg-[#15803D] p-8 space-y-5 rounded-[12px]">
@@ -169,13 +153,12 @@
             </form>
         </section>
 
-
-        <!-- end -->
+        <!-- footer -->
         <section class="bg-[#14532D] text-white text-lg text-center py-6">
             <p>© 2025 Green Earth. All Rights Reserved.</p>
         </section>
-
     </main>
+
     <script src="./js/script.js"></script>
 </body>
 
